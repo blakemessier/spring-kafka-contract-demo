@@ -1,10 +1,10 @@
 {
   "type": "record",
   "name": "OrderEvent",
-  "namespace": "io.github.mathias82.demo.model",
+  "namespace": "io.github.mathias82.avro",
   "fields": [
     { "name": "orderId", "type": "string" },
     { "name": "amount", "type": "double" },
-    { "name": "currency", "type": ["null", "string"], "default": null }
+    { "name": "createdAt", "type": "string", "default": "" }
   ]
 }
