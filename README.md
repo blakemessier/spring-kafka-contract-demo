@@ -11,6 +11,21 @@ The goal is to **fail fast** if:
 
 ---
 
+## 📸 Demo Screenshots
+
+### ✅ Compatible schema evolution (v1 → v2)
+![Compatible](docs/assets/schema-compatible.png)
+
+### ❌ Breaking change detected (v2 → v3)
+![Breaking](docs/assets/schema-breaking.png)
+
+### 💥 Application fails at startup
+![Startup fail](docs/assets/startup-failure.png)
+
+### 🌐 Interactive Demo UI
+![UI](docs/assets/demo-ui.png)
+
+
 ## 🚨 The Problem
 
 In many Kafka-based systems:
@@ -91,3 +106,31 @@ Observe how the application fails before producing or consuming any data.
 - Schema Registry alone is not enough
 - Validation must happen before runtime
 - This starter enables safe Kafka evolution
+
+## 🚀 Live Schema Evolution Demo
+
+This repository contains a **live demo** explaining how Kafka schema contracts
+should be enforced **before producing data**.
+
+### Run locally
+```bash
+docker compose up -d
+
+Schema Registry: http://localhost:8081
+
+Demo flow
+
+1. Register initial schema (v1)
+2. Add optional field (v2) → ✅ compatible
+3. Remove required field (v3) → ❌ incompatible
+4. Application startup fails using spring-kafka-contract-starter
+
+Why this matters
+
+Without contract enforcement:
+- Breaking schemas reach Kafka
+- Consumers crash at runtime
+
+With this starter:
+- Incompatible schemas fail at application startup
+- Kafka stays safe
