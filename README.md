@@ -234,3 +234,12 @@ setting applies.
 
 spring-kafka-contract-starter automatically falls back to the global
 compatibility configuration to ensure safe startup validation.
+
+⚠️ Note on Avro compatibility
+
+This starter relies on Confluent Schema Registry compatibility rules.
+
+For BACKWARD compatibility:
+- Removing fields is allowed
+- Adding fields without default will fail
+- Changing field types will fail

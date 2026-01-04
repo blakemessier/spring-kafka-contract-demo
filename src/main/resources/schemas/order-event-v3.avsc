@@ -3,6 +3,7 @@
   "name": "OrderEvent",
   "namespace": "io.github.mathias82.avro",
   "fields": [
-    { "name": "orderId", "type": "string" }
+    { "name": "orderId", "type": "string" },
+    { "name": "status", "type": "string" }
   ]
 }
