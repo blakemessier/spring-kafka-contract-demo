@@ -114,10 +114,10 @@ kafka:
 ## 📚 Learn More
 
 Medium article:\
-https://medium.com/@mstauroy/building-a-kafka-event-driven-spring-boot-application-with-avro-schema-registry-and-postgresql-45114526fb87](https://medium.com/@mstauroy/fail-fast-kafka-schema-contracts-in-spring-boot-before-production-breaks-1b080204b49e
+https://medium.com/@mstauroy/fail-fast-kafka-schema-contracts-in-spring-boot-before-production-breaks-1b080204b49e
 
 Reddit discussion:\
-https://www.reddit.com/r/apachekafka/comments/1q42urd/kafka_schema_registry_avro_with_spring_boot/](https://www.reddit.com/r/apachekafka/comments/1q43hs6/failfast_kafka_schema_registry_compatibility/
+https://www.reddit.com/r/apachekafka/comments/1q43hs6/failfast_kafka_schema_registry_compatibility/
 
 ------------------------------------------------------------------------
 
