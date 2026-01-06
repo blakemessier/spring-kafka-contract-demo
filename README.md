@@ -2,244 +2,130 @@ This repository is part of the **Kafka Contract Enforcement** initiative:
 - 🔧 Starter: https://github.com/mathias82/spring-kafka-contract-starter
 - 🌐 Live Demo: https://mathias82.github.io/spring-kafka-contract-demo/
 
-# Spring Kafka Contract Demo
+# 🧪 Spring Kafka Contract -- Demo Project
 
-This project demonstrates how to enforce **Kafka data contracts** at application startup
-using **Schema Registry** and the  
-`spring-kafka-contract-starter`.
+A **fully runnable demo** showcasing **fail-fast Kafka Schema Registry
+contract validation** using **Spring Boot**, **Apache Kafka**, **Avro**,
+and **Confluent Schema Registry**.
 
-The goal is to **fail fast** if:
-- a required schema is missing
-- a schema is incompatible
-- a breaking change is introduced
+This project demonstrates how the\
+👉 **spring-kafka-contract-starter**\
+can prevent broken Kafka deployments by validating schema contracts **at
+application startup**.
 
----
+------------------------------------------------------------------------
 
-## 📸 Demo Screenshots
+## 🎯 What This Demo Shows
 
-### ✅ Compatible schema evolution (v1 → v2)
-![Compatible](docs/assets/schema-compatible.png)
+This demo answers a very practical question:
 
-### ❌ Breaking change detected (v2 → v3)
-![Breaking](docs/assets/schema-breaking.png)
+> *What actually happens when schemas are missing, incompatible, or
+> evolve incorrectly in a real Spring Boot Kafka application?*
 
-### 💥 Application fails at startup
-![Startup fail](docs/assets/startup-failure.png)
+It demonstrates:
 
-### 🌐 Interactive Demo UI
-![UI](docs/assets/demo-ui.png)
+-   Kafka producer & consumer with Avro\
+-   Schema Registry subject creation\
+-   Schema evolution (compatible & incompatible)\
+-   **Fail-fast application startup** when contracts are broken\
+-   How startup validation prevents late production failures
 
+This is **not a library**, but a **reference project** you can run,
+inspect, and experiment with.
 
-## 🚨 The Problem
+------------------------------------------------------------------------
 
-In many Kafka-based systems:
+## 🧩 Architecture
 
-- Producers start without validating schemas
-- Consumers fail at runtime (often in production)
-- Breaking changes propagate silently
-- Teams discover issues **after data is already corrupted**
+Spring Boot Producer\
+↓\
+Apache Kafka\
+↓\
+Spring Boot Consumer\
+↓\
+PostgreSQL
 
-Kafka itself does **not** enforce data contracts.
+Schema Registry (Avro)\
+↑\
+Contract validation at startup
 
----
+------------------------------------------------------------------------
 
-## ✅ The Solution
+## 🚀 Tech Stack
 
-This demo shows how to:
+-   Java 17\
+-   Spring Boot 3.x\
+-   Apache Kafka\
+-   Confluent Schema Registry\
+-   Avro\
+-   PostgreSQL\
+-   Docker & Docker Compose
 
-- Declare expected schemas via configuration
-- Validate schema existence at startup
-- Enforce compatibility rules (BACKWARD / FORWARD / FULL)
-- Prevent applications from starting with invalid contracts
+------------------------------------------------------------------------
 
-All without writing custom validation code.
+## 🔗 Related Project
 
----
+This demo is built to showcase:
 
-## 🧱 Architecture
+👉 **Spring Kafka Contract Starter**\
+https://github.com/mathias82/spring-kafka-contract-starter
 
-Spring Boot App
-|
-|-- StartupSchemaValidator
-|-- Schema Registry (Confluent / Apicurio)
-|
-Kafka Broker
+The starter enforces Kafka schema contracts **before** the application
+starts.
 
+------------------------------------------------------------------------
 
----
+## 📦 How to Run the Demo
 
-## ⚙️ Configuration
+### 1️⃣ Start infrastructure
 
-```yaml
-kafka:
-  contract:
-    enabled: true
-    compatibility: BACKWARD
-    registry:
-      type: confluent
-      url: http://localhost:8081
-    subjects:
-      - name: order-events-value
-        schema-file: classpath:schemas/order-event.avsc
+docker compose up -d
 
-▶️ Running the Demo
-1️⃣ Start infrastructure
+This starts Kafka, Schema Registry and PostgreSQL.
 
-docker-compose up
+### 2️⃣ Run the applications
 
-2️⃣ Start the application
+./mvnw spring-boot:run
 
-mvn spring-boot:run
+### 3️⃣ Observe Startup Validation
 
-If the schema exists and is compatible → ✅ application starts.
+-   Application starts if schemas are valid\
+-   Application fails if a subject is missing or incompatible
 
-If not → ❌ application fails immediately.
+Broken contracts = **no startup**.
 
-🧪 What to Try
+------------------------------------------------------------------------
 
-- Remove a required field from the schema
-- Change a field type
-- Rename the subject
-- Switch compatibility mode
+## 📄 Configuration Example
 
-Observe how the application fails before producing or consuming any data.
+kafka: contract: enabled: true compatibility: BACKWARD registry: url:
+http://localhost:8081 subjects: - name: user-events-value schema-file:
+classpath:schemas/user-event.avsc
 
-🎯 Key Takeaways
+------------------------------------------------------------------------
 
-- Kafka does not enforce contracts by default
-- Schema Registry alone is not enough
-- Validation must happen before runtime
-- This starter enables safe Kafka evolution
+## 📚 Learn More
 
-## 🚀 Live Schema Evolution Demo
+Medium article:\
+https://medium.com/@mstauroy/building-a-kafka-event-driven-spring-boot-application-with-avro-schema-registry-and-postgresql-45114526fb87
 
-This repository contains a **live demo** explaining how Kafka schema contracts
-should be enforced **before producing data**.
+Reddit discussion:\
+https://www.reddit.com/r/apachekafka/comments/1q42urd/kafka_schema_registry_avro_with_spring_boot/
 
-Demo flow
+------------------------------------------------------------------------
 
-1. Register initial schema (v1)
-2. Add optional field (v2) → ✅ compatible
-3. Remove required field (v3) → ❌ incompatible
-4. Application startup fails using spring-kafka-contract-starter
+## 👀 Who This Demo Is For
 
-Why this matters
+-   Kafka + Schema Registry users\
+-   Spring Boot engineers using Avro\
+-   Teams dealing with schema evolution\
+-   Anyone bitten by late Kafka failures
 
-Without contract enforcement:
-- Breaking schemas reach Kafka
-- Consumers crash at runtime
+------------------------------------------------------------------------
 
-With this starter:
-- Incompatible schemas fail at application startup
-- Kafka stays safe
+## ⭐ Final Note
 
-What this demo proves
+This demo exists to make schema contracts **visible and testable**.
 
-✅ Application fails fast if:
-
-a required schema subject is missing
-
-schema compatibility is violated
-
-registry configuration is incorrect
-
-✅ No runtime surprises
-✅ No broken consumers in production
-
-Spring Boot App
-   |
-   |-- StartupSchemaValidator
-   |-- SchemaRegistryClient
-   |
-Kafka Broker  <--->  Schema Registry
-
-🧪 Demo Prerequisites
-
-- Docker + Docker Compose
-- Java 21
-- Maven 3.9+
-- (Optional) Postman
-
-
-▶️ Run the Demo
-1️⃣ Start Kafka & Schema Registry
-docker-compose up -d
-
-
-Verify:
-
-Kafka → localhost:9092
-
-Schema Registry → http://localhost:8081
-
-2️⃣ Register Schema & Compatibility
-
-Either:
-
-Option A – automatic (recommended)
-
-Schema is registered via schema-init container.
-
-Option B – Postman / curl
-
-curl -X PUT http://localhost:8081/config/order-events-value \
-  -H "Content-Type: application/json" \
-  -d '{ "compatibility": "BACKWARD" }'
-
-curl -X POST http://localhost:8081/subjects/order-events-value/versions \
-  -H "Content-Type: application/vnd.schemaregistry.v1+json" \
-  -d @schemas/order-event-v1.json
-
-3️⃣ Start the Spring Boot app
-
-mvn spring-boot:run
-
-✔️ App starts successfully
-✔️ Schema validated
-✔️ Compatibility enforced
-
-💥 Breaking the Contract (Demo Moment)
-
-Register an incompatible schema:
-
-curl -X POST http://localhost:8081/subjects/order-events-value/versions \
-  -H "Content-Type: application/vnd.schemaregistry.v1+json" \
-  -d @schemas/order-event-breaking.json
-
-Restart the app:
-
-mvn spring-boot:run
-
-❌ Application fails immediately with:
-
-IncompatibleSchemaException: Schema is NOT compatible
-
-## 🧪 Postman Demo
-
-This repository includes a Postman collection demonstrating:
-
-- Schema Registry management
-- Kafka producer calls via REST
-- Kafka consumer visualization
-
-Import:
-spring-kafka-contract-demo.postman_collection.json
-
-
-ℹ️ Note on Schema Registry Compatibility
-
-If a subject does not define its own compatibility level, the Schema Registry
-returns 404 (error_code 40408). In that case, the global compatibility
-setting applies.
-
-spring-kafka-contract-starter automatically falls back to the global
-compatibility configuration to ensure safe startup validation.
-
-⚠️ Note on Avro compatibility
-
-This starter relies on Confluent Schema Registry compatibility rules.
-
-For BACKWARD compatibility:
-- Removing fields is allowed
-- Adding fields without default will fail
-- Changing field types will fail
+If you find it useful, check out the starter:
+https://github.com/mathias82/spring-kafka-contract-starter
